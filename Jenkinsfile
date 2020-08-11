@@ -1,19 +1,15 @@
 pipeline {
 
     agent {
-        dockerfile {
-      filename 'Dockerfile'
-	     args "-u root --entrypoint=''"
-        }
+        docker {
+      image "bryandollery/terraform-packer-aws-alpine"
+      args "-u root --entrypoint='' --rm"
+    }
     }
     stages {
 	stage ('build') {
 		
 		steps {
-		sh "chmod +x provision.sh"
-		sh "chmod +x packer.json"
-		sh " make"
-		sh "make build"
                 sh 'packer build packer.json'
             }
         }
