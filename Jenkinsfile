@@ -18,8 +18,9 @@ pipeline {
     }
 		steps {
 		sh "chmod +x provision.sh && chmod +x packer.json"
+		sh " make"
+		sh "make build"
                 sh "docker build --tag packerweb-server:latest ."
-                sh "docker tag packerweb-server fatimahalobaidan/packerweb-server:latest"
             }
         }
         stage ('test') {
