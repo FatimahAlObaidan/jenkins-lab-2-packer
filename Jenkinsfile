@@ -17,7 +17,8 @@ pipeline {
 	   	 PROJECT_NAME='packerweb-server'
     }
 		steps {
-		sh "chmod +x provision.sh && chmod +x packer.json"
+		sh "chmod +x provision.sh"
+		sh "chmod +x packer.json"
 		sh " make"
 		sh "make build"
                 sh "docker build --tag packerweb-server:latest ."
@@ -31,7 +32,7 @@ pipeline {
 stage ('release') {
             
             steps {
-               
+               	sh "whoiam"
                 sh "docker login -u ${CREDS_USR} -p ${CREDS_PSW}"
             }
     }
