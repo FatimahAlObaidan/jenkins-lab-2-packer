@@ -10,6 +10,8 @@ pipeline {
 	stage ('build') {
 		
 		steps {
+		sh 'chmod +x provision.sh'
+		sh 'chmod +x packer.json'
                 sh 'packer build packer.json'
             }
         }
