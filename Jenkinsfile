@@ -18,13 +18,7 @@ pipeline {
             }
         }
         
-stage ('release') {
-            
-            steps {
-               	sh "whoiam"
-                sh "docker login -u ${CREDS_USR} -p ${CREDS_PSW}"
-            }
-    }
+
 	    
    }
 	environment{
