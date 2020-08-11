@@ -1,8 +1,8 @@
 pipeline {
 
     agent {
-        docker {
-	    image 'bryandollery/terraform-packer-aws-alpine'
+        dockerfile {
+      filename 'Dockerfile'
 	    args "-u root"
         }
     }
