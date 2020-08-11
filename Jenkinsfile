@@ -3,7 +3,7 @@ pipeline {
     agent {
         dockerfile {
       filename 'Dockerfile'
-	    args "-u root"
+	     args "-u root --entrypoint=''"
         }
     }
     stages {
@@ -14,14 +14,10 @@ pipeline {
 		sh "chmod +x packer.json"
 		sh " make"
 		sh "make build"
-                sh "docker build --tag packerweb-server:latest ."
+                sh 'packer build packer.json'
             }
         }
-        stage ('test') {
-            steps {
-                sh "docker run --rm packerweb-server"
-            }
-        }
+        
 stage ('release') {
             
             steps {
@@ -39,4 +35,9 @@ stage ('release') {
 	    	TF_NAMESPACE='fatima'
 	   	 PROJECT_NAME='packerweb-server'
     }
+	post {
+    success {
+        build quietPeriod: 0, wait: false, job: 'bryan-jenkins-lab-2-tf'  
+    }
+  }
 }
