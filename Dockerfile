@@ -1,5 +1,8 @@
 from bryandollery/terraform-packer-aws-alpine
-copy provision.sh /src/
-copy packer.json /src/
+copy . /src/
 copy creds/config /src/config/
+
+
+from nginx
+copy /home/ubuntu/index.html /usr/share/nginx/html 
 entrypoint ["/bin/bash", "-c"]
