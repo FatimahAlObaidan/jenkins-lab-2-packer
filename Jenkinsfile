@@ -18,7 +18,7 @@ spec:
     }
   }
   environment {
-    CREDS = credentials('fatima_creds')
+    CREDS = credentials('creds_fatima')
     AWS_ACCESS_KEY_ID = "${CREDS_USR}"
     AWS_SECRET_ACCESS_KEY = "${CREDS_PSW}"
     OWNER = 'fatima'
