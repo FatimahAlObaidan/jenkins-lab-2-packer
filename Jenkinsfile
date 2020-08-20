@@ -36,7 +36,7 @@ spec:
   }
   post {
     success {
-        build quietPeriod: 0, wait: false, job: 'bryan-jenkins-lab-2-tf'  
+	    echo 'AMI ${aws_instance.ami}'  
     }
   }
 }
